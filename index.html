@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html><head>
+    <title>Guitar Builder</title>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui-error.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui-navi.css" />
+    <link rel="stylesheet" type="text/css" href="css/guitar.css" />
+
+    <script type="application/javascript" src="js/jquery-1.4.4.min.js"></script>
+    <script type="application/javascript" src="js/jquery-ui-1.8.9.custom.min.js"></script>
+    <script type="application/javascript" src="js/jquery-ui-error.js"></script>
+    <script type="application/javascript" src="js/jquery-ui-navi.js"></script>
+
+    <script type="application/javascript" src="js/matrix4x4.js"></script>
+    <script type="application/javascript" src="js/editor.js"></script>
+    <script type="application/javascript" src="js/main.js"></script>
+</head><body>
+    <!-- Canvas -->
+    <canvas id="editor"></canvas>
+
+    <!-- Menus -->
+    <div id="navi">
+        <!-- Account -->
+        <div style="width:500px"
+            data-title="Account" data-image="img/home.png">
+            Logged in as Bob<br/>
+            <button id="log_out">Log out</button>
+        </div>
+        <!-- Guitar -->
+        <div style="width:400px"
+            data-title="Guitar" data-image="img/guitar.png">
+            <label for="guitar_name">Guitar name:</label>
+            <input type="text" id="guitarname"/><br/>
+        </div>
+        <!-- Settings -->
+        <div style="width:500px"
+            data-title="Settings" data-image="img/settings.png">
+            Settings Content<br/>
+            All kinds of buttons and shizzle!
+            OAPSFJKJFDWJ WIFNIWJ EFNi wenfijU WENFIUJW ENFIW E
+        </div>
+        <!-- Admin -->
+        <div style="width:500px"
+            data-title="Admin" data-image="img/admin.png">
+            Admin Content
+        </div>
+    </div>
+
+    <!-- Error -->
+    <div id="error"></div>
+
+    <!-- Footer -->
+    <div id="footer">
+        <strong>Guitar Builder</strong> by 
+        <strong>Jussi Kosunen</strong></div>
+
+    <!-- Overlay -->
+    <div id="overlay">
+        <div id="overlay_pad"></div>
+        <div id="overlay_img">
+            <img src="img/spinner.gif" alt="loading"/>
+        </div>
+        <div id="overlay_text" class="light"/>
+    </div>
+</body></html>
