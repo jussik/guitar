@@ -1,6 +1,17 @@
+@font-face {
+    font-family:Quicksand;
+    src:url('font/Quicksand_Book.otf');
+}
+@font-face {
+    font-family:Quicksand;
+    font-weight:bold;
+    src:url('font/Quicksand_Bold.otf');
+}
+
 body {
     margin:0px;
-    font-family:sans;
+    font-family:Quicksand, sans;
+    line-height:110%;
     font-size:10pt;
     background-color:#CCCCCC;
 }
