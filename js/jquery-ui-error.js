@@ -5,8 +5,8 @@ _init:function() {
         .addClass("error_outer")
         .append('<div class="error_inner" />');
     $('.error_inner',this.options.div)
-        .append('<span class="error_content"></span>')
-        .append('<span class="error_close">x</span>');
+        .append('<div class="error_close">x</div>')
+        .append('<div class="error_content"></div>');
     $('.error_close').click($.proxy(this._hide,this));
     this.options.div.hide();
 },
@@ -16,7 +16,7 @@ error:function(err) {
         this.options.visible = true;
     }
     console.error(err);
-    $('.error_content',this.options.div).text(err);
+    $('.error_content',this.options.div).html(err);
 },
 _hide:function() {
     this.options.div.hide('slide',{direction:'up'});

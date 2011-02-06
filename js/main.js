@@ -24,7 +24,8 @@ function editorNoSupport() {
         '<a href="http://www.khronos.org/webgl">WebGL.</a><br/>'+
         'Try the latest version of one of the following browsers:<br/>'+
         '<a href="http://www.mozilla.com/firefox">Mozilla Firefox</a>'+
-        ' | <a href="http://www.google.com/chrome">Google Chrome</a>')
+        ' | <a href="http://www.google.com/chrome">Google Chrome</a><br/>'+
+        '<button>Ignore</button>')
         .show()
         .animate(
             {"margin-top":
@@ -32,6 +33,11 @@ function editorNoSupport() {
                 -$("#overlay_text").height()/2,
              "opacity":1
             },500);
+    $("#overlay_text button").click(function() {
+        $("#editor").remove();
+        editorError("<strong>No WebGL support</strong>: Editor is disabled.");
+        editorLoaded();
+    });
 }
 function editorError(err) {
     $("#error").Error("error",err);

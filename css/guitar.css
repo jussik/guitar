@@ -60,6 +60,9 @@ a:hover {
 #overlay_text {
     margin-top:10px;
 }
+#overlay_text button {
+    margin-top:20px;
+}
 .nosupport {
     display:none;
     opacity:0;
