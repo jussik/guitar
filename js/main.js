@@ -68,6 +68,10 @@ function editorNoSupport() {
              "opacity":1
             },500);
     $("#overlay_text button").button().click(function() {
+        $("#overlay_text")
+            .animate({opacity:0,"margin-top":0},500);
+        $("#overlay_img")
+            .animate({opacity:1},500);
         editorError("<strong>No WebGL support</strong>: Editor is disabled.");
         editorLoaded();
     });
