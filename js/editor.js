@@ -3,80 +3,55 @@ options:{},
 // MAIN BITS
 _init:function(data) {
     $.extend(this.options,data);
-
     this.canvas = this.element[0];
-    if(!this.canvas.getContext) {
-        this.options.onNoSupport();
-        return;
-    }
-    this.gl = this.canvas.getContext("experimental-webgl");
-    var gl = this.gl;
-    if(!gl) {
-        this.options.onNoSupport();
-        return;
-    }
-    
-    gl.clearColor(0.8,0.8,0.8,1.0);
-    gl.clearDepth(1.0);
-    gl.enable(gl.DEPTH_TEST);
-    gl.depthFunc(gl.LEQUAL);
 
-    this.modelview = this._addStack(new Matrix4x4());
-    this.perspective = this._addStack(new Matrix4x4());
-
-    this._onResize();
+    this.canvas.width = $(this.canvas).width();
+    this.canvas.height = $(this.canvas).height();
 
     this.options.loadingLabel.html("Loading <strong>Guitar Builder</strong>");
-    this.options.onReady();
 
-    //this.loopInterval = setInterval($.proxy(this._drawLoop,this), 20);
-    this._drawLoop();
+    if(!$W.initialize(this.canvas)) {
+        this.options.onNoSupport();
+        return;
+    }
+    $W.GL.clearColor(0.8,0.8,0.8,1.0);
+    $W.camera.setPosition(0,3,-4);
+    
+    var squareData = [
+        ["vertex",[
+            -1,0,-1,
+             1,0, 1,
+             1,0,-1,
+            -1,0, 1
+            ]
+        ],["color",[
+            1,0,1,
+            1,1,0,
+            0,1,1,
+            1,0,0
+            ]
+        ],["wglu_elements",[
+            0,3,2,
+            1,2,3
+            ]
+        ]
+    ];
+
+    var square = $W.createObject({type:$W.GL.TRIANGLES, data:squareData});
+    square.animation._update = function() {
+        this.setRotation(this.age/40,0,0);
+    };
+
+    $W.update = $.proxy(this._onUpdate,this);
+    $W.start(20);
+
+    this.options.onReady();
 },
 _error:function(err) {
     this.options.onError(err);
 },
-_onResize:function() {
-    this.width = $(this.canvas).width();
-    this.height = $(this.canvas).height();
-
-    this.perspective.loadIdentity();
-    this.perspective.perspective(45, this.width/this.height,
-        0.1, 100.0);
-
-    this.modelview.loadIdentity();
-    this.modelview.translate(0,0,-4);
-},
-
-// MAIN LOOP
-_drawLoop:function() {
-    var gl = this.gl;
-    gl.viewport(0,0,this.width,this.height);
-    gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
-
-    this.perspective.push();
-    this.modelview.push();
-
-    this.perspective.pop();
-    this.modelview.pop();
-},
-
-// UTILITIES
-_addStack:function(matrix) {
-    matrix.stack = new Array();
-    matrix.push = function() {
-        if(matrix.stack.length > 100) {
-            this._error("Error: Matrix stack overflow");
-        } else {
-            matrix.stack.push(matrix.elements);
-        }
-    }
-    matrix.pop = function() {
-        if(matrix.stack.length < 1) {
-            this._error("Error: Matrix stack underflow");
-        } else {
-            matrix.elements = matrix.stack.pop();
-        }
-    }
-    return matrix;
+_onUpdate:function() {
+    this.canvas.width = $(this.canvas).width();
+    this.canvas.height = $(this.canvas).height();
 }
 });

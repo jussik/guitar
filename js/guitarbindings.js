@@ -4,7 +4,7 @@ function createGuitarBindings(g) {
         {"L":"Left","R":"Right"});
     new SliderBinding(g,"scale",23,30,0.25);
     new HandednessBinding(g,"heel",
-        {"N":"NT","S":"Set","B":"Bolt-on"});
+        {"N":"Neck-through","S":"Set","B":"Bolt-on"});
 }
 
 var Binding = Class.extend({
