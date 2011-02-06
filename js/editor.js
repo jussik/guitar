@@ -43,7 +43,7 @@ _init:function(data) {
     };
 
     $W.update = $.proxy(this._onUpdate,this);
-    $W.start(20);
+    //$W.start(20);
 
     this.options.onReady();
 },
