@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html><head>
     <title>Guitar Builder</title>
+    <link rel="stylesheet" type="text/css"
+        href="css/smoothness/jquery-ui-1.8.9.custom.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery-ui-error.css" />
     <link rel="stylesheet" type="text/css" href="css/jquery-ui-navi.css" />
-    <link rel="stylesheet" type="text/css" href="css/guitar.css" />
+    <link rel="stylesheet" type="text/css" href="css/guitarbindings.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
 
     <script type="application/javascript" src="js/jquery-1.4.4.min.js"></script>
-    <script type="application/javascript" src="js/jquery-ui-1.8.9.custom.min.js"></script>
+    <script type="application/javascript"
+        src="js/jquery-ui-1.8.9.custom.min.js"></script>
     <script type="application/javascript" src="js/jquery-ui-error.js"></script>
     <script type="application/javascript" src="js/jquery-ui-navi.js"></script>
 
+    <script type="application/javascript" src="js/class.js"></script>
     <script type="application/javascript" src="js/matrix4x4.js"></script>
     <script type="application/javascript" src="js/editor.js"></script>
+    <script type="application/javascript" src="js/guitar.js"></script>
+    <script type="application/javascript" src="js/guitarbindings.js"></script>
     <script type="application/javascript" src="js/main.js"></script>
 </head><body>
     <!-- Canvas -->
@@ -20,26 +27,34 @@
     <!-- Menus -->
     <div id="navi">
         <!-- Account -->
-        <div style="width:500px"
+        <div style="width:300px"
             data-title="Account" data-image="img/home.png">
-            Logged in as Bob<br/>
-            <button id="log_out">Log out</button>
+            User account support not yet implemented.
         </div>
         <!-- Guitar -->
-        <div style="width:400px"
+        <div style="width:300px"
             data-title="Guitar" data-image="img/guitar.png">
-            <label for="guitar_name">Guitar name:</label>
-            <input type="text" id="guitarname"/><br/>
+            <table style="width:100%"><tr>
+                <td>Guitar name:</td>
+                <td><input type="text" id="guitar_title"/></td>
+            </tr><tr>
+                <td>Number of strings:</td>
+                <td><div id="guitar_strings"></div></td>
+            </tr></table>
         </div>
         <!-- Settings -->
-        <div style="width:500px"
+        <div style="width:200px"
             data-title="Settings" data-image="img/settings.png">
-            Settings Content<br/>
-            All kinds of buttons and shizzle!
-            OAPSFJKJFDWJ WIFNIWJ EFNi wenfijU WENFIUJW ENFIW E
+            <table style="width:100%"><tr>
+                <td>Editor resolution:</td>
+                <td>1:1</td>
+            </tr><tr>
+                <td>Effects:</td>
+                <td>Full</td>
+            </tr></table>
         </div>
         <!-- Admin -->
-        <div style="width:500px"
+        <div style="width:300px"
             data-title="Admin" data-image="img/admin.png">
             Admin Content
         </div>

@@ -1,0 +1,12 @@
+.gb_slider_parent {
+    width:100%;
+}
+.gb_slider {
+    margin-right:40px;
+    margin-left:5px;
+}
+.gb_label {
+    width:20px;
+    float:right;
+    margin-right:5px;
+}

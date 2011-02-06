@@ -15,8 +15,6 @@ _init:function(data) {
         this.options.onNoSupport();
         return;
     }
-        this.options.onNoSupport();
-        return;
     
     gl.clearColor(0.8,0.8,0.8,1.0);
     gl.clearDepth(1.0);

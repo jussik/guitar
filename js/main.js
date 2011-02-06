@@ -1,3 +1,5 @@
+var guitar;
+
 $(window).load(function() {
     $("#error").Error();
     $("#editor").Editor({
@@ -9,9 +11,41 @@ $(window).load(function() {
 });
 
 function editorLoaded() {
-    $("#navi").Navi();
+    initNavi();
+    initAccount();
+    initGuitar();
+
     $("#overlay").delay(500).fadeOut(500);
 }
+
+function initNavi() {
+    $("#navi").Navi();
+    $("#editor").click(function() {
+        $("#navi").Navi("collapse");
+    });
+}
+
+function initAccount() {}
+function initGuitar() {
+    Guitar.prototype.error = editorError;
+
+    guitar = new Guitar();
+    guitar.loadFromURL();
+    guitar.updateURL();
+
+    createGuitarBindings(guitar);
+
+    $("#guitar_title").change(function() {
+        val = $(this).val();
+        guitar.title = val;
+        guitar.updateURL();
+        if(val.length > 0)
+            $("head title").text("Guitar Builder - "+val);
+        else
+            $("head title").text("Guitar Builder");
+    });
+}
+
 function editorNoSupport() {
     $("#overlay_img")
         .delay(500)
@@ -33,8 +67,7 @@ function editorNoSupport() {
                 -$("#overlay_text").height()/2,
              "opacity":1
             },500);
-    $("#overlay_text button").click(function() {
-        $("#editor").remove();
+    $("#overlay_text button").button().click(function() {
         editorError("<strong>No WebGL support</strong>: Editor is disabled.");
         editorLoaded();
     });

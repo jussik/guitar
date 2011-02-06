@@ -30,6 +30,17 @@ a:hover {
     color:#DDD;
 }
 
+button.ui-button {
+    font-size:smaller;
+}
+input[type="text"] {
+    border:1px solid #DDD;
+    border-top-color:black;
+    border-bottom-color:white;
+    border-radius:4px;
+    background-color:rgba(255,255,255,0.5);
+}
+
 #editor {
     width:100%;
     height:100%;

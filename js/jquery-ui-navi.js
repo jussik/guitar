@@ -102,6 +102,12 @@ _initNavi: function(elem) {
     this._hideTitle(e);
 },
 
+collapse:function() {
+    if(this.options.visible != false) {
+        this._hideContent(this.options.visible);
+    }
+},
+
 _showContent: function(e) {
     if(e.animating || e.content.visible) return false;
     if(this.options.visible != false) {
