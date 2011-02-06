@@ -80,6 +80,22 @@ updateURL: function() {
     window.location = "#"+list.join('&');
 },
 
+get: function(arg) {
+    switch(arg) {
+        case "strings": case "handedness":
+        case "scale": case "heel":
+            return this.data[arg];
+    }
+},
+
+set: function(arg, val) {
+    switch(arg) {
+        case "strings": case "handedness":
+        case "scale": case "heel":
+            this.data[arg] = val; break;
+    }
+},
+
 _getGuitarDef: function() {
     var guitar = this.data;
 

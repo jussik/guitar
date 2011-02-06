@@ -33,6 +33,9 @@ a:hover {
 button.ui-button {
     font-size:smaller;
 }
+.ui-buttonset {
+    font-size:smaller;
+}
 input[type="text"] {
     border:1px solid #DDD;
     border-top-color:black;
