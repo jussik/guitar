@@ -10,10 +10,17 @@ _init:function(data) {
 
     this.options.loadingLabel.html("Loading <strong>Guitar Builder</strong>");
 
-    if(!$W.initialize(this.canvas)) {
+    var support = false;
+    try {
+        support = $W.initialize(this.canvas);
+    } catch(e) {
+    }
+
+    if(!support) {
         this.options.onNoSupport();
         return;
     }
+
     $W.GL.clearColor(0.8,0.8,0.8,1.0);
     $W.camera.setPosition(0,3,-4);
     
